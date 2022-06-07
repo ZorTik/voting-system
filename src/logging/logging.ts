@@ -31,14 +31,18 @@ export abstract class Logger<T> {
         }
         this.print(obj, level);
     }
-    setDefaultLevel(prior: number) {
-        let matching = this.lvls.filter(l => l.priority === prior);
-        if(matching.length > 0) {
-            let lvl = matching[0];
-            if(lvl.priority < this.minLvl!.priority) {
-                this.minLvl = lvl;
+    setDefaultLevel(prior: Level | number) {
+        let level = null;
+        if(typeof prior === "number") {
+            let matching = this.lvls.filter(l => l.priority === prior);
+            if(matching.length > 0) {
+                let lvl = matching[0];
+                if(lvl.priority < this.minLvl!.priority) {
+                    level = lvl;
+                }
             }
-        }
+        } else level = prior;
+        this.minLvl = level;
     }
     addLevel(level: Level): boolean {
         if(this.lvls

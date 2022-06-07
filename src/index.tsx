@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 // Configuration
-import config from "./config.json";
-import "./api/api.ts"
 import {DateLogger} from "./logging/loggers";
 import {Level} from "./logging/logging";
 
@@ -25,7 +23,7 @@ class DefaultLevel extends Level {
     }
 }
 const logger = new DateLogger(DefaultLevel.values());
-logger.log("Starting...")
+logger.log("Starting...");
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -35,4 +33,4 @@ root.render(
   </React.StrictMode>
 );
 
-export {config, logger, DefaultLevel};
+export {logger, DefaultLevel};
