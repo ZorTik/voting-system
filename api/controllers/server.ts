@@ -53,24 +53,44 @@ router.put("/:id", async (req: Request, res: Response) => {
         status(res, 409, "Server already exists.");
         return;
     }
+    let accountId = req.body.accountId;
     let name = req.body.name;
     let gif = req.body.gif;
     let source = req.body.source;
-    if(name == null || gif == null || source == null) {
-        status(res, 400, "Request must contain name, gif and source.");
+    if(accountId == null || name == null || gif == null || source == null) {
+        status(res, 400, "Request must contain accountId, name, gif and source.");
         return;
     }
-    prisma.server.create({
+    accountId = accountId.toString();
+    if(await prisma.account.findFirst({
+        where: {
+            nickname: accountId
+        }
+    }) == null) {
+        status(res, 404, "Account not found.");
+        return;
+    }
+    (await prisma.account.update({
+        where: {
+            nickname: accountId
+        },
         data: {
-            name: name,
-            gif: gif,
-            source: source,
-            votes: {
-                create: []
+            servers: {
+                create: {
+                    name: name,
+                    gif: gif,
+                    source: {
+                        create: source
+                    },
+                    votes: {
+                        create: []
+                    }
+                }
             }
         }
-    });
-    status(res, 200, "Server has been uploaded.");
+    }))
+        ? status(res, 200, "Server has been uploaded.")
+        : status(res, 500, "Something went wrong.");
 });
 router.get("/:id/votes", async (req: Request, res: Response) => {
     let id = Number(req.params.id);

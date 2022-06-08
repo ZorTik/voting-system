@@ -1,0 +1,130 @@
+.section-heading {
+    font-weight: bold;
+    margin: 0;
+}
+.servers-heading {
+    margin-bottom: 8px !important;
+}
+.head-view {
+    background-color: white;
+    margin-bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-position: bottom;
+    background-attachment: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 80px;
+}
+.head-content, .servers-container {
+    width: 75vh;
+}
+.announcement {
+    width: 100%;
+    min-height: 5px;
+    background-color: #0b4846;
+    padding: 5px;
+    border-bottom: 3px solid #011818;
+}
+.announcement p {
+    margin: 0 !important;
+    color: #e1f1e7;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+.toolbar {
+    display: flex;
+    flex-direction: row;
+}
+.toolbar-left, .toolbar-right {
+    width: 50%;
+}
+.toolbar-left {
+    text-align: left;
+}
+.toolbar-right {
+}
+.toolbar-right form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.toolbar-right form, .toolbar-right input, .toolbar-right button {
+    margin: 3px 6px 0 0;
+}
+.toolbar-right input {
+    max-width: 150px !important;
+}
+.toolbar-right button {
+    border: 1px solid #011818 !important;
+    background: linear-gradient(to bottom, #0d6dfb, #0c57c5) !important;
+}
+.toolbar-right button:hover {
+    background: linear-gradient(to bottom, #0848ad, #062960) !important;
+}
+.toolbar-right label {
+    margin: 0 !important;
+}
+.listing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.servers-container {
+    background-color: #f9f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-top: 20px;
+}
+.listing-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #30aca6;
+    padding: 30px;
+}
+.listing-header h1 {
+    color: #fff;
+    font-size: 30px;
+    margin: 0;
+}
+.server-view {
+    background-color: white;
+    padding: 20px 30px 20px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-bottom: 2px solid #2c8d8b;
+}
+.server-view h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+}
+.server-view img {
+    border-radius: 1px;
+    width: 95%;
+}
+.server-head-info {
+
+}
+.server-rank {
+    background: linear-gradient(to bottom, #30ac3f, #1b8d29);
+    border-radius: 3px;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 3px solid #1b6462;
+}
+.server-rank h1 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: lighter !important;
+    margin: 0;
+}

@@ -16,7 +16,7 @@ function appendOrderFilter(reqJson: any, query: any) {
     orders.hasOwnProperty(order) && orders[order](query);
 }
 router.post("/", async (req, res) => {
-    let reqJson = JSON.parse(req.body);
+    let reqJson = req.body;
     if (reqJson.hasOwnProperty("page") && reqJson.hasOwnProperty("size")) {
         let page = reqJson["page"];
         let size = reqJson["size"];
@@ -35,8 +35,12 @@ router.post("/", async (req, res) => {
         const servers = await prisma.server.findMany(query);
         res.json(servers);
     } else {
-        status(res, 400);
+        status(res, 400, `Request must contain page and size. (${JSON.stringify(reqJson)})`);
     }
+});
+router.get("/count", async (req, res) => {
+    let count = await prisma.server.count();
+    res.json({count: count});
 });
 module.exports = router;
 export default orders;

@@ -14,6 +14,8 @@ model Account {
   nickname  String @id @unique
   password  String
   servers   Server[]
+
+  @@map("votesystem_accounts")
 }
 
 model Server {
@@ -24,6 +26,8 @@ model Server {
   votes     Vote[]
   account   Account? @relation(fields: [accountId], references: [nickname])
   accountId String
+
+  @@map("votesystem_servers")
 }
 
 model Source {
@@ -32,6 +36,8 @@ model Source {
   serverId  Int
   ip        String
   port      Int
+
+  @@map("votesystem_sources")
 }
 
 model Vote {
@@ -40,4 +46,6 @@ model Vote {
   serverId  Int
   nickname  String
   createdAt DateTime @default(now())
+
+  @@map("votesystem_votes")
 }

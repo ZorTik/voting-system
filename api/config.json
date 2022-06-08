@@ -1,3 +1,5 @@
 {
+  "api_port": 3001,
+  "page_port": 3000,
   "vote_expiration": 3600000
 }
